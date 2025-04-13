@@ -7,7 +7,7 @@ vim.o.smartindent = true -- Automatically indent new lines
 -- vim.o.wrap = false -- Disable line wrapping
 vim.o.cursorline = true -- Highlight the current line
 vim.o.termguicolors = true -- Enable 24-bit RGB colors
-vim.o.cc = "80" -- Column border
+-- vim.o.cc = "80" -- Column border
 
 vim.o.clipboard = 'unnamedplus'
 
@@ -32,10 +32,10 @@ require("plugins")
 require("keybinds")
 require("setup")
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    pattern = "*",
-    command = "set nornu nonu | Neotree left show"
-})
+--vim.api.nvim_create_autocmd("VimEnter", {
+--    pattern = "*",
+--    command = "set nornu nonu | Neotree left show"
+--})
 
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",

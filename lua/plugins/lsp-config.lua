@@ -12,6 +12,8 @@ return function(use)
                     }
                 }
             }
+
+            require'lspconfig'.gopls.setup {}
         end
     }
 end

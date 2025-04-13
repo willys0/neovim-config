@@ -9,7 +9,11 @@ return function(use)
             require("project_nvim").setup {
                 manual_mode = false,
                 silent_chdir = false,
-                scope_chdir = 'tab'
+                scope_chdir = 'tab',
+
+                -- Exclude "lsp"
+                -- detection_methods = { "pattern "}
+                ignore_lsp = { "gopls" }
             }
             require('telescope').load_extension('projects')
         end

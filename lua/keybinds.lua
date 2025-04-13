@@ -32,7 +32,7 @@ vim.api.nvim_set_keymap('n', '<Leader>f/', ':Telescope live_grep<CR>', { noremap
 vim.api.nvim_set_keymap('n', '<Leader>/', ':Telescope live_grep<CR>', { noremap = true, silent = true, desc = "Find in files"})
 vim.api.nvim_set_keymap('n', '<Leader>fd', ':Telescope dir live_grep<CR>', { noremap = true, silent = true, desc = "Find in dir"})
 vim.api.nvim_set_keymap('n', '<Leader>fp', ':Telescope find_files search_dirs={"~/.config/nvim"}<CR>', { noremap = true, silent = true, desc = "Private config"})
-vim.api.nvim_set_keymap('n', '<Leader>fb', ':Neotree reveal<CR>', { noremap = true, silent = true, desc = "Open file browser"})
+vim.api.nvim_set_keymap('n', '<Leader>fb', ':Neotree left reveal<CR>', { noremap = true, silent = true, desc = "Open file browser"})
 vim.api.nvim_set_keymap('n', '<Leader>fB', ':Neotree toggle<CR>', { noremap = true, silent = true, desc = "Open file browser, working directory"})
 --vim.api.nvim_set_keymap('n', '<Leader>fb', ':Telescope file_browser hidden=true<CR>', { noremap = true, silent = true, desc = "Open file browser"})
 --vim.api.nvim_set_keymap('n', '<Leader>fB', ':Neotree toggle<CR>', { noremap = true, silent = true, desc = "Toggle side file browser"})
@@ -57,14 +57,15 @@ do
 end
 
 -- Code
-vim.api.nvim_set_keymap('n', '<Leader>cf', ':Telescope treesitter<CR>', { noremap = true, silent = true, desc = "Find symbol"})
+--vim.api.nvim_set_keymap('n', '<Leader>cf', ':Telescope treesitter<CR>', { noremap = true, silent = true, desc = "Find symbol"})
+vim.api.nvim_set_keymap('n', '<Leader>cf', '<cmd>Telescope aerial<CR>', { noremap = true, silent = true, desc = "Find symbol"})
+vim.keymap.set('n', '<Leader>c?', vim.diagnostic.open_float, { noremap = true, silent = true, desc = "Pop up diagnostics message"})
 
 -- Git
 vim.api.nvim_set_keymap('n', '<Leader>gg', ':Neogit<CR>', { noremap = true, silent = true, desc = "Open NeoGit"})
 
 -- Projects
 vim.api.nvim_set_keymap('n', '<Leader>pp', ':Telescope projects<CR>:Neotree show<CR>', { noremap = true, silent = true, desc = "Find project"})
-vim.api.nvim_set_keymap('n', '<Leader>pa', ':Telescope projects<CR>', { noremap = true, silent = true, desc = "Add project"})
 
 -- Docker
 vim.api.nvim_set_keymap('n', '<Leader>dd', ':lua OpenLazydocker()<CR>', { noremap = true, silent = true, desc = "Open Lazydocker"})
