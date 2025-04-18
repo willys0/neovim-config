@@ -1,7 +1,5 @@
-return function(use)
-    use {
-        'farmergreg/vim-lastplace',
-        config = function()
-        end
-    }
-end
+return {
+    'farmergreg/vim-lastplace',
+    config = function()
+    end
+}

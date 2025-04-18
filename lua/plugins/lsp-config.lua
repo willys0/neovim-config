@@ -1,19 +1,34 @@
+return {
+	"neovim/nvim-lspconfig", -- Language server protocol configurations
+	dependencies = {
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"saghen/blink.nvim",
+	},
+	config = function()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-return function(use)
-    use {
-        'neovim/nvim-lspconfig', -- Language server protocol configurations
-        config = function()
-            require'lspconfig'.lua_ls.setup{
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { 'vim', 'use', 's', 'sn', 'i', 'rep', 'c', 'd', 'f', 't', 'fmta', 'fmt' },
-                        }
-                    }
-                }
-            }
+		local lspconfig = require("lspconfig")
+		local mason = require("mason")
 
-            require'lspconfig'.gopls.setup {}
-        end
-    }
-end
+		mason.setup()
+
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim", "use", "s", "sn", "i", "rep", "c", "d", "f", "t", "fmta", "fmt" },
+					},
+				},
+			},
+		})
+
+		lspconfig.gopls.setup({ capabilities = capabilities })
+
+		lspconfig.clangd.setup({ capabilities = capabilities })
+
+    -- Python lsp
+		lspconfig.ruff.setup({ capabilities = capabilities })
+	end,
+}

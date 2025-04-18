@@ -1,13 +1,11 @@
 
-return function(use)
-    use {
-        'nvim-telescope/telescope-file-browser.nvim',
-        requires = { 
-            "nvim-telescope/telescope.nvim", 
-            "nvim-lua/plenary.nvim" 
-        },
-        config = function()
-            require("telescope").load_extension "file_browser"
-        end
-    }
-end
+return {
+    'nvim-telescope/telescope-file-browser.nvim',
+    requires = { 
+        "nvim-telescope/telescope.nvim", 
+        "nvim-lua/plenary.nvim" 
+    },
+    config = function()
+        require("telescope").load_extension "file_browser"
+    end
+}

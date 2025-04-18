@@ -1,2 +1,2 @@
-# Ignore packer file
-plugin/
+lazyvim.json
+lazy-lock.json
