@@ -99,6 +99,10 @@ map(
 	{ noremap = true, silent = true, desc = "Block comment" }
 )
 
+map("n", "<Leader>cw", function()
+	vim.lsp.buf.format()
+end, { noremap = true, silent = true, desc = "Format buffer" })
+
 -- Git
 --map("n", "<Leader>gg", ":Neogit<CR>", { noremap = true, silent = true, desc = "Open NeoGit" })
 -- map("n", "<Leader>gg", "<cmd>LazyGit<CR>", { noremap = true, silent = true, desc = "Open LazyGit" })
