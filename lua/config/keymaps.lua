@@ -118,5 +118,4 @@ end, { noremap = true, silent = true, desc = "Format buffer" })
 
 function NewWorkspace()
 	vim.cmd("tabe %")
-	vim.cmd("Neotree left show")
 end
