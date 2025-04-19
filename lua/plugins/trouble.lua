@@ -1,6 +1,6 @@
 return {
 	"folke/trouble.nvim",
-	event = VeryLazy,
+	event = "VeryLazy",
 	cmd = "Trouble",
 	dependencies = {
 		"nvim-telescope/telescope.nvim",

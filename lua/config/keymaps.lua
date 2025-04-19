@@ -8,9 +8,9 @@ vim.keymap.del("n", "gri") -- lsp implementation
 vim.keymap.del("n", "grn") -- lsp rename
 vim.keymap.del("n", "grr") -- lsp references
 
-map("n", "gaa", vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "LSP Code Action"})
-map("x", "gaa", vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "LSP Code Action"})
-map("n", "gai", vim.lsp.buf.implementation, { noremap = true, silent = true, desc = "LSP Implementation"})
+map("n", "gaa", vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "LSP Code Action" })
+map("x", "gaa", vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "LSP Code Action" })
+map("n", "gai", vim.lsp.buf.implementation, { noremap = true, silent = true, desc = "LSP Implementation" })
 -- map("n", "gar", vim.lsp.buf.rename, { noremap = true, silent = true, desc = "LSP Rename"})
 
 map("n", "<Leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit" })
@@ -53,6 +53,27 @@ for i = 0, 9, 1 do
 	map("n", "<Leader><Tab>" .. i, i .. "gt", { noremap = true, silent = true, desc = "Open tab " .. i })
 end
 
+-- Diagnostics
+map("n", "<leader>dd", function()
+	vim.diagnostic.open_float(nil, {
+		scope = "line", -- important: shows all for the line
+		border = "rounded",
+		source = "always",
+	})
+end, { desc = "Show diagnostics for current line" })
+
+map("n", "<leader>dv", function()
+	local new_config = vim.diagnostic.config().virtual_lines or vim.diagnostic.config().virtual_text
+	vim.diagnostic.config({ virtual_lines = false })
+	vim.diagnostic.config({ virtual_text = not new_config })
+end, { desc = "Enable/disable virtual text" })
+
+map("n", "<leader>dV", function()
+	local new_config = not vim.diagnostic.config().virtual_lines
+	vim.diagnostic.config({ virtual_lines = new_config })
+	vim.diagnostic.config({ virtual_text = not new_config })
+end, { desc = "Toggle Virtual Lines/Text" })
+
 -- Code
 --map('n', '<Leader>cf', ':Telescope treesitter<CR>', { noremap = true, silent = true, desc = "Find symbol"})
 map("n", "<Leader>cf", "<cmd>Telescope aerial<CR>", { noremap = true, silent = true, desc = "Find symbol" })
@@ -76,14 +97,6 @@ map(
 	"<cmd>LocalHighlightToggle<CR>",
 	{ noremap = true, silent = true, desc = "Toggle local highlight" }
 )
-
-map("n", "<leader>d", function()
-	vim.diagnostic.open_float(nil, {
-		scope = "line", -- important: shows all for the line
-		border = "rounded",
-		source = "always",
-	})
-end, { desc = "Show diagnostics for current line" })
 
 map(
 	"n",
@@ -114,9 +127,9 @@ map("n", "<Leader>cw", function()
 	vim.lsp.buf.format()
 end, { noremap = true, silent = true, desc = "Format buffer" })
 
-map("n", "<Leader>ci", function ()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, { noremap = true, silent = true, desc = "Toggle Inlay Hints"})
+map("n", "<Leader>ci", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { noremap = true, silent = true, desc = "Toggle Inlay Hints" })
 
 map("n", "g?", vim.lsp.buf.hover, { noremap = true, silent = true, desc = "View documentation" })
 map("n", "<Leader>c?", vim.lsp.buf.hover, { noremap = true, silent = true, desc = "View documentation" })
