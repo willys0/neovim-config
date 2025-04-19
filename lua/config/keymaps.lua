@@ -2,6 +2,17 @@ local map = vim.keymap.set
 -- Leader key
 --vim.g.mapleader = ' ' -- Space as the leader key
 
+vim.keymap.del("n", "gra") -- lsp code action
+vim.keymap.del("x", "gra")
+vim.keymap.del("n", "gri") -- lsp implementation
+vim.keymap.del("n", "grn") -- lsp rename
+vim.keymap.del("n", "grr") -- lsp references
+
+map("n", "gaa", vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "LSP Code Action"})
+map("x", "gaa", vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "LSP Code Action"})
+map("n", "gai", vim.lsp.buf.implementation, { noremap = true, silent = true, desc = "LSP Implementation"})
+-- map("n", "gar", vim.lsp.buf.rename, { noremap = true, silent = true, desc = "LSP Rename"})
+
 map("n", "<Leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit" })
 
 -- Window
@@ -102,6 +113,13 @@ map(
 map("n", "<Leader>cw", function()
 	vim.lsp.buf.format()
 end, { noremap = true, silent = true, desc = "Format buffer" })
+
+map("n", "<Leader>ci", function ()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { noremap = true, silent = true, desc = "Toggle Inlay Hints"})
+
+map("n", "g?", vim.lsp.buf.hover, { noremap = true, silent = true, desc = "View documentation" })
+map("n", "<Leader>c?", vim.lsp.buf.hover, { noremap = true, silent = true, desc = "View documentation" })
 
 -- Git
 --map("n", "<Leader>gg", ":Neogit<CR>", { noremap = true, silent = true, desc = "Open NeoGit" })

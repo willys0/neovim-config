@@ -1,5 +1,6 @@
 return {
 	"folke/which-key.nvim", -- Show keys on pressing space
+	event = "VeryLazy",
 	config = function()
 		local whichkey = require("which-key")
 
@@ -14,6 +15,8 @@ return {
 			{ "<leader>g", group = "Git" },
 			{ "<leader>p", group = "Project" },
 			{ "<leader>s", group = "Snacks" },
+
+			{ "ga", group = "Actions" },
 		})
 	end,
 }

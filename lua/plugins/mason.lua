@@ -26,7 +26,7 @@ return {
 				"clangd",
 				"clang-format",
 				"gopls",
-				"ruff",
+				"basedpyright",
 			},
 		},
 	},
@@ -41,6 +41,7 @@ return {
 			handlers = {},
 			ensure_installed = {
 				"codelldb",
+				"debugpy",
 			},
 		},
 	},

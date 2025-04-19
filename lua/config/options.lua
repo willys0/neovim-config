@@ -11,6 +11,19 @@ vim.o.termguicolors = true -- Enable 24-bit RGB colors
 
 vim.o.clipboard = "unnamedplus"
 
+vim.o.list = true
+vim.o.listchars = "tab:› ,eol:¬,trail:⋅"
+
 -- Syntax highlighting and filetype plugins
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
+
+vim.api.nvim_set_hl(0, "BlinkCmpGhostText", {
+	fg = "#6272a4",
+})
+
+vim.o.updatetime = 500
+
+vim.go.inccommand = "split"
+
+

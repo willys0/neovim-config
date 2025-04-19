@@ -19,19 +19,39 @@ return {
 		keymap = { preset = "super-tab" },
 
 		appearance = {
+			use_nvim_cmp_as_default = false,
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- Adjusts spacing to ensure icons are aligned
 			nerd_font_variant = "mono",
 		},
 
 		-- (Default) Only show the documentation popup when manually triggered
-		completion = { documentation = { auto_show = true } },
+		completion = {
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 500,
+				draw = function(opts)
+					if opts.item and opts.item.documentation then
+						local out = require("pretty_hover.parser").parse(opts.item.documentation.value)
+						opts.item.documentation.value = out:string()
+					end
+
+					opts.default_implementation(opts)
+				end,
+			},
+
+			ghost_text = { enabled = false },
+		},
+
+		signature = { enabled = true },
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
+
+		--snippets = { preset = "default" | "luasnip" | "mini_snippets" },
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
 		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
@@ -40,5 +60,6 @@ return {
 		-- See the fuzzy documentation for more information
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
+	init = function() end,
 	opts_extend = { "sources.default" },
 }
