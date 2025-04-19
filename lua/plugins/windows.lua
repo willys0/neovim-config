@@ -1,6 +1,6 @@
 return {
 	"anuvyklack/windows.nvim",
-	event = VeryLazy,
+	event = "VeryLazy",
 	dependencies = {
 		"anuvyklack/middleclass",
 		"anuvyklack/animation.nvim",
