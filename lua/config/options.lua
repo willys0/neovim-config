@@ -26,4 +26,4 @@ vim.o.updatetime = 500
 
 vim.go.inccommand = "split"
 
-
+vim.opt.sessionoptions:remove("blank")

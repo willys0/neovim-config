@@ -17,7 +17,10 @@ return {
 		-- C-k: Toggle signature help (if signature.enabled = true)
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
-		keymap = { preset = "super-tab" },
+		--keymap = { preset = "super-tab" },
+		keymap = {
+			preset = "enter",
+		},
 
 		appearance = {
 			use_nvim_cmp_as_default = false,
@@ -61,6 +64,5 @@ return {
 		-- See the fuzzy documentation for more information
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
-	init = function() end,
 	opts_extend = { "sources.default" },
 }
