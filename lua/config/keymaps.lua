@@ -15,6 +15,8 @@ map("n", "gai", vim.lsp.buf.implementation, { noremap = true, silent = true, des
 
 map("n", "<Leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit" })
 
+map("n", "<Leader><space>", ":b#<CR>", { noremap = true, silent = true, desc = "Previous buffer" })
+
 -- Window
 map("n", "<Leader>wss", ":split<CR> :wincmd j<CR>", { noremap = true, silent = true, desc = "Split Horizontal" })
 map("n", "<Leader>wvv", ":vsplit<CR> :wincmd l<CR>", { noremap = true, silent = true, desc = "Split Vertical" })
